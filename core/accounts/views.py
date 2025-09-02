@@ -9,16 +9,16 @@ class Login(LoginView):
     template_name = 'accounts/login.html'
 
     def get_success_url(self):
-        return reverse_lazy("todo:home")
+        return reverse_lazy("todo:task-list")
     
 class Logout(LogoutView):
-     next_page = reverse_lazy('todo:home')
+     next_page = reverse_lazy('todo:task-list')
 
 
 class Register(FormView):
     form_class = RegisterUserForm
     template_name = "accounts/register.html"
-    success_url = reverse_lazy("todo:home")
+    success_url = reverse_lazy("todo:task-list")
 
     def form_valid(self, form):
         user = form.save()
