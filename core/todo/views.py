@@ -21,6 +21,10 @@ class TaskList(LoginRequiredMixin,ListView):
             context['tasks'] = context['tasks'].filter(title__startswith=search_input)
         context['search_input'] = search_input
         return context
+    def get_template_names(self):
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return ['todo/task_list_partial.html']  # فقط div با task list
+        return ['todo/task_list.html']
     
 class TaskDetail(LoginRequiredMixin,DetailView):
     model = Task

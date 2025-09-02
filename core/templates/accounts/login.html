@@ -9,21 +9,20 @@
         {% csrf_token %}
 
         {% if form.non_field_errors %}
-            <div class="text-danger mb-3">
-                {{ form.non_field_errors.0 }}
-            </div>
+        <div class="text-danger mb-3">
+            {{ form.non_field_errors.0 }}
+        </div>
         {% endif %}
 
         <!-- Username Field -->
         <div class="mb-3">
             <label for="id_username" class="form-label">Username</label>
-            <input type="text" name="username" id="id_username" class="form-control"
-                   placeholder="Enter your username"
-                   value="{{ form.username.value|default_if_none:'' }}" required>
+            <input type="text" name="username" id="id_username" class="form-control" placeholder="Enter your username"
+                value="{{ form.username.value|default_if_none:'' }}" required>
             {% if form.username.errors %}
-                <div class="text-danger mt-1">
-                    {{ form.username.errors.0 }}
-                </div>
+            <div class="text-danger mt-1">
+                {{ form.username.errors.0 }}
+            </div>
             {% endif %}
         </div>
 
@@ -31,16 +30,15 @@
         <div class="mb-3 position-relative">
             <label for="id_password" class="form-label">Password</label>
             <input type="password" name="password" id="id_password" class="form-control"
-                   placeholder="Enter your password" required>
-            <span class="password-toggle" id="togglePassword">
-                <i class="bi bi-eye-slash"></i>
-            </span>
+                placeholder="Enter your password" required>
+            <i class="bi bi-eye-slash password-toggle" id="togglePassword"></i>
             {% if form.password.errors %}
-                <div class="text-danger mt-1">
-                    {{ form.password.errors.0 }}
-                </div>
+            <div class="text-danger mt-1">
+                {{ form.password.errors.0 }}
+            </div>
             {% endif %}
         </div>
+
 
         <!-- Submit Button -->
         <button type="submit" class="btn btn-auth mt-3">Log In</button>
