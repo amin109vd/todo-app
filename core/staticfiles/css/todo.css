@@ -1,0 +1,259 @@
+/* ---------- Header ---------- */
+.task-header .username {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #0d6efd;
+}
+
+.task-header .task-count {
+    color: #6c757d;
+}
+
+/* ---------- Task Controls ---------- */
+.task-controls .add-task-btn {
+    background: linear-gradient(90deg, #1a1e25, #2a2433);
+    color: #fff;
+    font-weight: 500;
+    transition: transform 0.2s;
+    border: none;
+}
+
+.task-controls .add-task-btn:hover {
+    transform: scale(1.05);
+}
+
+.task-controls .search-form input {
+    max-width: 200px;
+}
+
+/* ---------- Todo Cards ---------- */
+.todo-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #ffffff;
+}
+
+.todo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.task-title {
+    text-decoration: none;
+    color: #212529;
+    font-weight: 500;
+}
+
+.task-title.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* ---------- No Tasks ---------- */
+.no-tasks {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+    .task-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* ---------- Task Form Card ---------- */
+.task-form-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-form-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Form Fields ---------- */
+.task-form .form-label {
+    font-weight: 500;
+    color: #212529;
+}
+
+.task-form input,
+.task-form textarea {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.2s;
+}
+
+.task-form input:focus,
+.task-form textarea:focus {
+    border-color: #6610f2;
+    box-shadow: 0 0 0 0.2rem rgba(102, 16, 242, 0.25);
+}
+
+/* ---------- Submit Button ---------- */
+.btn-gradient {
+    background: linear-gradient(90deg, #0d6efd, #6610f2);
+    color: #fff;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-gradient:hover {
+    color: #fff;
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Go Back Link ---------- */
+.btn-link {
+    color: #6610f2;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.btn-link:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+    .task-form-container {
+        padding: 0 1rem;
+    }
+}
+
+/* ---------- Task Detail Card ---------- */
+.task-detail-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-detail-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Task Title ---------- */
+.task-title-detail {
+    font-weight: 700;
+    color: #0d6efd;
+    font-size: 1.75rem;
+}
+
+.task-title-detail.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: #6c757d;
+}
+
+/* ---------- Task Description ---------- */
+.task-description {
+    color: #212529;
+    font-size: 1rem;
+}
+
+/* ---------- Checkbox ---------- */
+.form-check-input {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+/* ---------- Actions ---------- */
+.task-actions .btn-link {
+    color: #6610f2;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.task-actions .btn-link:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+.task-actions .btn-outline-info,
+.task-actions .btn-outline-danger {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-actions .btn-outline-info:hover,
+.task-actions .btn-outline-danger:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+    .task-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* ---------- Task Delete Card ---------- */
+.task-delete-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-delete-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Delete Warning ---------- */
+.delete-warning {
+    font-size: 1rem;
+    color: #dc3545;
+    /* رنگ هشدار قرمز */
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ---------- Buttons ---------- */
+.btn-danger {
+    background: #dc3545;
+    border: none;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-danger:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Go Back Link ---------- */
+.btn-link {
+    color: #6610f2;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.btn-link:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+    .task-delete-container {
+        padding: 0 1rem;
+    }
+}

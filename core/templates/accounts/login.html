@@ -3,15 +3,51 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    <div class="login-card">
-        <h2>Log In</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-login mt-3">Log In</button>
-        </form>
-        <div style="margin-top: 15px;">
-            <a href="{% url 'accounts:register' %}">I don't have account</a>
+<div class="auth-card login-card">
+    <h2>Log In</h2>
+    <form method="post" class="auth-form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="text-danger mb-3">
+                {{ form.non_field_errors.0 }}
+            </div>
+        {% endif %}
+
+        <!-- Username Field -->
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Username</label>
+            <input type="text" name="username" id="id_username" class="form-control"
+                   placeholder="Enter your username"
+                   value="{{ form.username.value|default_if_none:'' }}" required>
+            {% if form.username.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.username.errors.0 }}
+                </div>
+            {% endif %}
         </div>
+
+        <!-- Password Field -->
+        <div class="mb-3 position-relative">
+            <label for="id_password" class="form-label">Password</label>
+            <input type="password" name="password" id="id_password" class="form-control"
+                   placeholder="Enter your password" required>
+            <span class="password-toggle" id="togglePassword">
+                <i class="bi bi-eye-slash"></i>
+            </span>
+            {% if form.password.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.password.errors.0 }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-auth mt-3">Log In</button>
+    </form>
+
+    <div class="mt-3 text-center">
+        <a href="{% url 'accounts:register' %}" class="auth-link">I don't have an account</a>
     </div>
-{%endblock%}
+</div>
+{% endblock %}

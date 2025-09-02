@@ -3,26 +3,29 @@
 {% block title %}Delete Task{% endblock %}
 
 {% block content %}
-
-<div class="container my-5">
+<div class="task-delete-container my-5">
     <div class="row justify-content-center">
-        <h4><a href="{%url 'todo:task-list' %}">&lt; go back</a></h4>
         <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h2 class="card-title mb-4 text-center">Create a New Post</h2>
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <p> Are you sure you want to delete "{{object}}" task ? </p>
-                        {{form.as_p}}
+            <!-- Go Back Link -->
+            <a href="{% url 'todo:task-list' %}" class="btn btn-link mb-3">&lt; Go Back</a>
 
+            <div class="card shadow-sm task-delete-card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Delete Task</h2>
+                    
+                    <p class="delete-warning mb-4">
+                        Are you sure you want to delete the task "<strong>{{ object }}</strong>"?
+                    </p>
+
+                    <form method="post" enctype="multipart/form-data" class="task-delete-form">
+                        {% csrf_token %}
+                        
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary w-100">Confirm</button>
+                        <button type="submit" class="btn btn-danger w-100">Confirm Delete</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}

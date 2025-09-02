@@ -3,20 +3,30 @@
 {% block title %}Task Form{% endblock %}
 
 {% block content %}
-<div class="container my-5">
+<div class="task-form-container my-5">
     <div class="row justify-content-center">
-        <h4><a href="{%url 'todo:task-list' %}">&lt; go back</a></h4>
         <div class="col-md-8">
-            <div class="card shadow-sm">
+            <a href="{% url 'todo:task-list' %}" class="btn btn-link mb-3">&lt; Go Back</a>
+            <div class="card shadow-sm task-form-card">
                 <div class="card-body">
-                    <h2 class="card-title mb-4 text-center">Task Form</h2>
-                    <form method="post" enctype="multipart/form-data">
+                    <h2 class="card-title text-center mb-4">Add / Edit Task</h2>
+                    <form method="post" enctype="multipart/form-data" class="task-form">
                         {% csrf_token %}
 
-                        {{form.as_p}}
+                        <!-- Title Field -->
+                        <div class="mb-3">
+                            <label for="id_title" class="form-label">Title</label>
+                            <input type="text" name="title" id="id_title" class="form-control" placeholder="Enter task title" value="{{ form.title.value|default_if_none:'' }}">
+                        </div>
+
+                        <!-- Description Field -->
+                        <div class="mb-3">
+                            <label for="id_description" class="form-label">Description</label>
+                            <textarea name="description" id="id_description" class="form-control" rows="5" placeholder="Enter task description">{{ form.description.value|default_if_none:'' }}</textarea>
+                        </div>
 
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        <button type="submit" class="btn btn-gradient w-100 mt-3">Submit</button>
                     </form>
                 </div>
             </div>

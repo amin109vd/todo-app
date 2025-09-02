@@ -1,18 +1,39 @@
 {% extends 'base.html' %}
 
-{% block title %}Task Form{% endblock %}
+{% block title %}Task Detail{% endblock %}
 
 {% block content %}
-{% if task.complete %}
-    <h3 style="text-decoration: line-through;">{{task.title}}</h3>
-    {% else %}
-    <h3>{{task.title}}</h3>
-    {% endif %}
-<p>{{task.description}}</p>
-<form method="POST" action="{% url 'todo:task-toggle' task.id %}">
-        {% csrf_token %}
-        <input type="checkbox" name="complete" onchange="this.form.submit()" {% if task.complete %}checked{% endif %}>
-    </form>
-    <hr>
-    <h4><a href="{%url 'todo:task-list' %}">&lt; go back</a></h4>
+<div class="task-detail-container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm task-detail-card">
+                <div class="card-body">
+                    <!-- Task Title -->
+                    <h2 class="task-title-detail {% if task.complete %}completed{% endif %} mb-3">{{ task.title }}</h2>
+
+                    <!-- Task Description -->
+                    <p class="task-description mb-4">{{ task.description|linebreaks }}</p>
+
+                    <!-- Complete Toggle -->
+                    <form method="POST" action="{% url 'todo:task-toggle' task.id %}" class="d-flex align-items-center mb-4">
+                        {% csrf_token %}
+                        <input type="checkbox" name="complete" class="form-check-input me-2" id="taskComplete" onchange="this.form.submit()" {% if task.complete %}checked{% endif %}>
+                        <label for="taskComplete" class="form-check-label">Mark as Complete</label>
+                    </form>
+
+                    <hr>
+
+                    <!-- Actions -->
+                    <div class="task-actions mt-3 d-flex justify-content-between flex-wrap">
+                        <a href="{% url 'todo:task-list' %}" class="btn btn-link">&lt; Go Back</a>
+                        <div>
+                            <a href="{% url 'todo:task-update' task.id %}" class="btn btn-outline-info me-2">Edit</a>
+                            <a href="{% url 'todo:task-delete' task.id %}" class="btn btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

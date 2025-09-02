@@ -3,41 +3,42 @@
 {% block title %}Task List{% endblock %}
 
 {% block content %}
-
-<h2>{{request.user.username}}</h2>
-<h6>you have to {{count}} task for done</h6>
-<hr>
-<div
-    style="display: flex; color: wheat; width: 400px; justify-content: space-between; margin-bottom: 50px; align-items: center;">
-    <h6><a href="{% url 'todo:task-create'%}">Add Task</a></h6>
-    <form method="get">
-        <input type="text" placeholder="search" name="search-area" value="{{search_input}}">
-        <input type="submit" value="serch">
-    </form>
-    
+<div class="task-header mb-4">
+    <h2 class="username">{{ request.user.username }}</h2>
+    <h6 class="task-count">You have {{ count }} task{{ count|pluralize }} to complete</h6>
+    <hr>
 </div>
+
+<div class="task-controls d-flex justify-content-between align-items-center mb-4 flex-wrap">
+    <a href="{% url 'todo:task-create' %}" class="btn btn-primary btn-sm add-task-btn">Add Task</a>
+    <form method="get" class="search-form d-flex">
+        <input type="text" name="search-area" placeholder="Search" value="{{ search_input }}" class="form-control form-control-sm me-2">
+        <button type="submit" class="btn btn-outline-secondary btn-sm">Search</button>
+    </form>
+</div>
+
 {% if tasks %}
-{% for task in tasks %}
-<div style="display: flex; justify-content: space-between; width: 300px;">
-    {% if task.complete %}
-    <h6 style="text-decoration: line-through;"><a style="text-decoration: none; color: black;" href="{% url 'todo:task-detail' task.id %}">{{task.title}}</a></h6>
-    {% else %}
-    <h6><a style="text-decoration: none; color: black;" href="{% url 'todo:task-detail' task.id %}">{{task.title}}</a></h6>
-    {% endif %}
-    <form method="POST" action="{% url 'todo:task-toggle' task.id %}">
-        {% csrf_token %}
-        <input type="checkbox" name="complete" onchange="this.form.submit()" {% if task.complete %}checked{% endif %}>
-    </form>
-    <h6><a href="{% url 'todo:task-update' task.id %}">edit</a></h6>
-    <h6><a href="{% url 'todo:task-delete' task.id %}">delete</a></h6>
-
-
-
-</div>
-{% endfor %}
-
+    <div class="task-list">
+        {% for task in tasks %}
+        <div class="todo-card d-flex justify-content-between align-items-center mb-3 p-2">
+            <div class="task-info">
+                <a href="{% url 'todo:task-detail' task.id %}" class="task-title {% if task.complete %}completed{% endif %}">
+                    {{ task.title }}
+                </a>
+            </div>
+            <div class="task-actions d-flex align-items-center">
+                <form method="POST" action="{% url 'todo:task-toggle' task.id %}" class="me-2">
+                    {% csrf_token %}
+                    <input type="checkbox" name="complete" class="form-check-input" onchange="this.form.submit()" {% if task.complete %}checked{% endif %}>
+                </form>
+                <a href="{% url 'todo:task-update' task.id %}" class="btn btn-sm btn-outline-info me-2">Edit</a>
+                <a href="{% url 'todo:task-delete' task.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% else %}
-<p>not any task</p>
+    <p class="no-tasks">No tasks found</p>
 {% endif %}
 
 {% endblock %}
