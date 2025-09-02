@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Form{% endblock %}
+
+{% block content %}
+{% if task.complete %}
+    <h3 style="text-decoration: line-through;">{{task.title}}</h3>
+    {% else %}
+    <h3>{{task.title}}</h3>
+    {% endif %}
+<p>{{task.description}}</p>
+<form method="POST" action="{% url 'todo:task-toggle' task.id %}">
+        {% csrf_token %}
+        <input type="checkbox" name="complete" onchange="this.form.submit()" {% if task.complete %}checked{% endif %}>
+    </form>
+    <hr>
+    <h4><a href="{%url 'todo:task-list' %}">&lt; go back</a></h4>
+{% endblock %}

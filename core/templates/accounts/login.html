@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-</head>
-<body>
+{% extends 'accounts/base-auth.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
     <div class="login-card">
         <h2>Log In</h2>
         <form method="post">
@@ -17,5 +14,4 @@
             <a href="{% url 'accounts:register' %}">I don't have account</a>
         </div>
     </div>
-</body>
-</html>
+{%endblock%}

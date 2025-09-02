@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Form{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <h4><a href="{%url 'todo:task-list' %}">&lt; go back</a></h4>
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title mb-4 text-center">Task Form</h2>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {{form.as_p}}
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
