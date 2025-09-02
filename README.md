@@ -17,15 +17,16 @@ This project includes:
 <img width="1896" height="867" alt="image" src="https://github.com/user-attachments/assets/68ba760e-6efb-4f76-9675-ca9d4080d8dc" />
 <img width="1914" height="857" alt="image" src="https://github.com/user-attachments/assets/62770615-756d-4bf8-8258-ad557a78ed8a" />
 
+ ---
 
 🛠 Features
-Modern, card-based UI
-Manual forms with error display
-Live task completion status
-AJAX-powered modals for add/edit/delete tasks
-Live search functionality without page reload
+- Modern, card-based UI
+- Manual forms with error display
+- Live task completion status
+- AJAX-powered modals for add/edit/delete tasks
+- Live search functionality without page reload
 
 📝 Notes
-Built with Bootstrap 5 and Bootstrap Icons
-Custom CSS and JS are in staticfiles/css and staticfiles/js
-Can be easily extended for more features with JS and AJAX
+- Built with Bootstrap 5 and Bootstrap Icons
+- Custom CSS and JS are in staticfiles/css and staticfiles/js
+- Can be easily extended for more features with JS and AJAX
